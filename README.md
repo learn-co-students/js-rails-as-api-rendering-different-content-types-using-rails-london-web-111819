@@ -166,7 +166,7 @@ class BirdsController < ApplicationController
 end
 ```
 
-Notice that the above would alter the structure of data being rendered. Rather
+Notice that the above would alter the structure of the data being rendered. Rather
 than an array of four birds, an object with two keys, each pointing to an array
 would be rendered instead. We will explore shaping our data in greater detail in
 upcoming lessons, but it is a critical concept to consider. Well structured data
