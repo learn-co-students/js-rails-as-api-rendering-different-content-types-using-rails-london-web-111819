@@ -67,9 +67,9 @@ Hello Mourning Dove
 This isn't very fancy, but **_this is actually enough for us to start using our
 JavaScript skills and access with a fetch request_**. To check this out
 yourself, in this code-along, there is an HTML file, `example_frontend.html`.
-Replace `BirdsController` with the code above, start up the Rails server (don't
-forget to migrate!) and open `example_frontend.html`. From the browser's
-console, with the Rails server running, run the following:
+Replace `BirdsController` with the code above, start up the Rails server and 
+open `example_frontend.html`. From the browser's console, with the Rails server 
+running, run the following:
 
 ```js
 fetch('http://localhost:3000/birds').then(response => response.text()).then(text => console.log(text))
