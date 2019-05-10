@@ -169,9 +169,11 @@ end
 Notice that the above would alter the structure of the data being rendered. Rather
 than an array of four birds, an object with two keys, each pointing to an array
 would be rendered instead. We will explore shaping our data in greater detail in
-upcoming lessons, but it is a critical concept to consider. Well structured data
-can _make your code simpler_. Poorly structured data can lead to complicated nests
-of JavaScript enumerables.
+upcoming lessons, but it is a critical concept to consider. 
+
+With the intent of constructing an API, we always want to be thinking about data. 
+Well structured API data can _make your frontend code simpler_. Poorly structured 
+API data can lead to complicated nests of JavaScript enumerables.
 
 ## Conclusion
 
