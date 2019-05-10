@@ -3,7 +3,6 @@
 ## Learning Goals
 
 - Override the default Rails view
-- Render HTML from a Rails controller
 - Render plain text from a Rails controller
 - Render JSON from a Rails controller
 
