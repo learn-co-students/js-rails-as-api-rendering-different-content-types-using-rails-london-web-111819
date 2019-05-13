@@ -3,7 +3,6 @@
 ## Learning Goals
 
 - Override the default Rails view
-- Render HTML from a Rails controller
 - Render plain text from a Rails controller
 - Render JSON from a Rails controller
 
@@ -11,9 +10,8 @@
 
 In the previous lesson, we revisited the default Rails MVC structure, and at the
 end, an ERB file was rendered. Rails, however, can render multiple types of
-content. In this code-along, we're going to take a look at a few of the options,
-as well as explore the use of `respond_to` while continuing to expand on the
-our bird watching application.
+content. In this lesson, we're going to look at some of the content types
+most useful to us as we build a Rails API.
 
 To follow along, run `rails db:migrate` and `rails db:seed` to set up your
 database and example data.
@@ -42,8 +40,8 @@ class BirdsController < ApplicationController
 end
 ```
 
-But we aren't restricted to displaying ERB. We can indicate to `render` what type
-of content to render. The simplest is plain text.
+But we aren't restricted to displaying ERB. We can indicate to what type
+of content we render. Let's first look at plain text.
 
 ### Render Plain Text From a Controller
 
@@ -66,11 +64,11 @@ Hello Mourning Dove
 ```
 
 This isn't very fancy, but **_this is actually enough for us to start using our
-JavaScript skills and access with a fetch request_**. To check this out
+JavaScript skills and access with a `fetch()` request_**. To check this out
 yourself, in this code-along, there is an HTML file, `example_frontend.html`.
-Replace `BirdsController` with the code above, start up the Rails server (don't
-forget to migrate!) and open `example_frontend.html`. From the browser's
-console, with the Rails server running, run the following:
+Replace `BirdsController` with the code above, start up the Rails server and
+open `example_frontend.html`. From the browser's console, with the Rails server
+running, run the following:
 
 ```js
 fetch('http://localhost:3000/birds').then(response => response.text()).then(text => console.log(text))
@@ -89,9 +87,23 @@ handle that. But, Rails has one better.
 
 ### Render JSON From a Controller
 
-To render _JSON_ from a Rails controller, you specify `json:` followed most
-often by a hast or array. In our case, we've already got a collection of data,
-so we can simply write:
+To render _JSON_ from a Rails controller, you specify `json:` followed by anything
+that can be converted to JSON format:
+
+```ruby
+class BirdsController < ApplicationController
+  def index
+    @birds = Bird.all
+    render json: 'Remember that JSON is just object notation converted to string data'
+  end
+end
+```
+
+We can pass strings as we see above, as well as hashes, arrays and other data
+types. It will all be converted to JavaScript Object Notation.
+
+In our bird watching case, we've already got a collection of data in our `index`
+action, so we can write:
 
 ```ruby
 class BirdsController < ApplicationController
