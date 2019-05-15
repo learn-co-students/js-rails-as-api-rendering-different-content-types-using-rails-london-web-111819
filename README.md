@@ -77,7 +77,7 @@ Hello Mourning Dove
 ```
 
 > **Notice**: On resolution of the `fetch()` request here, in the first
-`.then()`, `response.text()` is called, since we're handling plain text.
+> `.then()`, `response.text()` is called, since we're handling plain text.
 
 We haven't really escaped the MVC structure of Rails, but we're no longer using
 the ERB view, nor are we really _viewing_ in the same way we were before.
@@ -87,23 +87,41 @@ handle that. But, Rails has one better.
 
 ### Render JSON From a Controller
 
-To render _JSON_ from a Rails controller, you specify `json:` followed by anything
-that can be converted to JSON format:
+To render _JSON_ from a Rails controller, you specify `json:` followed something 
+can be converted to valid JSON:
 
 ```ruby
 class BirdsController < ApplicationController
   def index
     @birds = Bird.all
-    render json: 'Remember that JSON is just object notation converted to string data'
+    render json: 'Remember that JSON is just object notation converted to string data, so strings also work here'
   end
 end
 ```
 
 We can pass strings as we see above, as well as hashes, arrays, and other data
-types. It will all be converted to JavaScript Object Notation.
+types: 
 
-In our bird watching case, we've already got a collection of data in our `index`
-action, so we can write:
+```ruby
+class BirdsController < ApplicationController
+  def index
+    @birds = Bird.all
+    render json: { message: 'Hashes of data will get converted to JSON' }
+  end
+end
+```
+
+```ruby
+class BirdsController < ApplicationController
+  def index
+    @birds = Bird.all
+    render json: ['As','well','as','arrays']
+  end
+end
+```
+
+In our bird watching case, we actually already have a collection of data, `@birds`,
+so we can write:
 
 ```ruby
 class BirdsController < ApplicationController
@@ -182,15 +200,41 @@ end
 Notice that the above would alter the structure of the data being rendered. Rather
 than an array of four birds, an object with two keys, each pointing to an array
 would be rendered instead. We will explore shaping our data in greater detail in
-upcoming lessons, but it is a critical concept to consider. 
+upcoming lessons, but it is a critical concept to consider.
 
-With the intent of constructing an API, we always want to be thinking about data. 
-The purpose of an API is to be an accessible _interface_, in our case, to a 
-JavaScript frontend, so we want to always be thoughtful in how we structure
-data and how that data will be utilized. 
+With the intent of constructing an API, we always want to be thinking about
+data. The purpose of an API is to be an accessible _interface_, in our case, to
+a JavaScript frontend, so we want to always be thoughtful in how we structure
+data and how that data will be utilized.
 
-Well structured API data can make frontend code simpler. Poorly structured 
-API data can lead to complicated nests of JavaScript enumerables. 
+Well structured API data can make frontend code simpler. Poorly structured API
+data can lead to complicated nests of JavaScript enumerables.
+
+## Where is our Data Being Converted to JSON?
+
+When we include an array or hash after `render json:`, it turns out that Rails
+is actually being accomodating to us and implicitly handling the work of
+converting that array or hash to JSON.
+
+We can choose to explicitly convert our array or hash, without any problem by
+adding `to_json` to the end:
+
+```ruby
+class BirdsController < ApplicationController
+  def index
+    @birds = Bird.all
+    render json: { birds: @birds, messages: ['Hello Birds', 'Goodbye Birds'] }.to_json
+  end
+end
+```
+
+This will produce the same result as it did before. The `to_json` method is
+available to both [arrays][array.to_json] and [hashes][hash.to_json] in Rails,
+and does exactly what it says. 
+
+Rails favors convention as well as a clean and clutter free controller, so it
+has some built in 'magic' to handle things like this and keep us from having to
+write `to_json` on the same line as `render json:` in every action we write.
 
 ## Conclusion
 
@@ -198,3 +242,6 @@ Let's take a step back and consider what all this means because this is
 actually huge! Now that you know that Rails can render JSON, you have the
 ability to create entirely independent JavaScript frontends that can communicate
 with Rails backends!
+
+[array.to_json]: https://apidock.com/rails/Array/to_json
+[hash.to_json]: https://apidock.com/rails/Hash/to_json
