@@ -99,7 +99,7 @@ class BirdsController < ApplicationController
 end
 ```
 
-We can pass strings as we see above, as well as hashes, arrays and other data
+We can pass strings as we see above, as well as hashes, arrays, and other data
 types. It will all be converted to JavaScript Object Notation.
 
 In our bird watching case, we've already got a collection of data in our `index`
