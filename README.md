@@ -185,8 +185,12 @@ would be rendered instead. We will explore shaping our data in greater detail in
 upcoming lessons, but it is a critical concept to consider. 
 
 With the intent of constructing an API, we always want to be thinking about data. 
-Well structured API data can _make your frontend code simpler_. Poorly structured 
-API data can lead to complicated nests of JavaScript enumerables.
+The purpose of an API is to be an accessible _interface_, in our case, to a 
+JavaScript frontend, so we want to always be thoughtful in how we structure
+data and how that data will be utilized. 
+
+Well structured API data can make frontend code simpler. Poorly structured 
+API data can lead to complicated nests of JavaScript enumerables. 
 
 ## Conclusion
 
