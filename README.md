@@ -229,8 +229,9 @@ end
 ```
 
 This will produce the same result as it did before. The `to_json` method is
-available to both [arrays][array.to_json] and [hashes][hash.to_json] in Rails,
-and does exactly what it says. 
+made available to both [arrays][array.to_json] and [hashes][hash.to_json] in Rails, 
+but is not natively available to them in Ruby. It does exactly what it says - it
+takes whatever array or hash it is called on and converts it to JSON.
 
 Rails favors convention as well as a clean and clutter free controller, so it
 has some built in 'magic' to handle things like this and keep us from having to
