@@ -237,6 +237,35 @@ Rails favors convention as well as a clean and clutter free controller, so it
 has some built in 'magic' to handle things like this and keep us from having to
 write `to_json` on the same line as `render json:` in every action we write.
 
+## Say Goodbye to Instance Variables
+
+So far in controller actions, we've typically seen instance variables being used,
+just as we have in the examples in this lesson. 
+
+```rb
+class BirdsController < ApplicationController
+  def index
+    @birds = Bird.all
+    render json: @birds
+  end
+end
+```
+
+However, we really only needed instance variables when we were rendering to ERB.
+Now that we are directly rendering to JSON in the same action, we no longer need
+deal with instance variables and can instance just use a local variable:
+
+```rb
+class BirdsController < ApplicationController
+  def index
+    birds = Bird.all
+    render json: birds
+  end
+end
+```
+
+This is how we will displaying our examples going forward.
+
 ## Conclusion
 
 Let's take a step back and consider what all this means because this is
