@@ -253,7 +253,7 @@ end
 
 However, we really only needed instance variables when we were rendering to ERB.
 Now that we are directly rendering to JSON in the same action, we no longer need
-to deal with instance variables and can instance just use a local variable:
+to deal with instance variables and can instead just use a local variable:
 
 ```rb
 class BirdsController < ApplicationController
