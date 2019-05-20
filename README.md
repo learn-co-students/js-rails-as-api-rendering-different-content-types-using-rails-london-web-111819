@@ -11,14 +11,14 @@
 In the previous lesson, we revisited the default Rails MVC structure, and at the
 end, an ERB file was rendered. Rails, however, can render multiple types of
 content. In this lesson, we're going to look at some of the content types
-most useful to us as we build a Rails API.
+most useful to us as we build towards a Rails API.
 
 To follow along, run `rails db:migrate` and `rails db:seed` to set up your
 database and example data.
 
 ## Overriding the Default Rails View 
 
-Leaving off from the solution of the last lesson, the`index` action rendered all
+Leaving off from the solution of the last lesson, the `index` action rendered all
 birds:
 
 ```ruby
@@ -80,7 +80,7 @@ Hello Mourning Dove
 > `.then()`, `response.text()` is called, since we're handling plain text.
 
 We haven't really escaped the MVC structure of Rails, but we're no longer using
-the ERB view, nor are we really _viewing_ in the same way we were before.
+the ERB view, nor are we really _viewing_ in the same way we were before. 
 
 We've actually requested data, and since it is just plain text, JavaScript can
 handle that. But, Rails has one better.
@@ -240,7 +240,7 @@ write `to_json` on the same line as `render json:` in every action we write.
 ## Say Goodbye to Instance Variables
 
 So far in controller actions, we've typically seen instance variables being used,
-just as we have in the examples in this lesson. 
+just as we have in the examples in this lesson:
 
 ```rb
 class BirdsController < ApplicationController
@@ -264,7 +264,7 @@ class BirdsController < ApplicationController
 end
 ```
 
-This is how we will displaying our examples going forward.
+This is how we will be displaying our examples going forward.
 
 ## Conclusion
 
