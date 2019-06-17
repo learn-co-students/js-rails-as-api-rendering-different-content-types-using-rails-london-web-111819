@@ -10,13 +10,13 @@
 
 In the previous lesson, we revisited the default Rails MVC structure, and at the
 end, an ERB file was rendered. Rails, however, can render multiple types of
-content. In this lesson, we're going to look at some of the content types
-most useful to us as we build towards a Rails API.
+content. In this lesson, we're going to look at some of the content types most
+useful to us as we build towards a Rails API.
 
 To follow along, run `rails db:migrate` and `rails db:seed` to set up your
 database and example data.
 
-## Overriding the Default Rails View 
+## Overriding the Default Rails View
 
 Leaving off from the solution of the last lesson, the `index` action rendered all
 birds:
@@ -80,14 +80,14 @@ Hello Mourning Dove
 > `.then()`, `response.text()` is called, since we're handling plain text.
 
 We haven't really escaped the MVC structure of Rails, but we're no longer using
-the ERB view, nor are we really _viewing_ in the same way we were before. 
+the ERB view, nor are we really _viewing_ in the same way we were before.
 
 We've actually requested data, and since it is just plain text, JavaScript can
 handle that. But, Rails has one better.
 
 ### Render JSON From a Controller
 
-To render _JSON_ from a Rails controller, you specify `json:` followed something 
+To render _JSON_ from a Rails controller, you specify `json:` followed something
 can be converted to valid JSON:
 
 ```ruby
@@ -100,7 +100,7 @@ end
 ```
 
 We can pass strings as we see above, as well as hashes, arrays, and other data
-types: 
+types:
 
 ```ruby
 class BirdsController < ApplicationController
@@ -229,7 +229,7 @@ end
 ```
 
 This will produce the same result as it did before. The `to_json` method is
-made available to both [arrays][array.to_json] and [hashes][hash.to_json] in Rails, 
+made available to both [arrays][array.to_json] and [hashes][hash.to_json] in Rails,
 but is not natively available to them in Ruby. It does exactly what it says - it
 takes whatever array or hash it is called on and converts it to JSON.
 
