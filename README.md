@@ -100,7 +100,7 @@ handle that. But, Rails has one better.
 ### Render JSON From a Controller
 
 To render _JSON_ from a Rails controller, you specify `json:` followed by data
-can be converted to valid JSON:
+that can be converted to valid JSON:
 
 ```ruby
 class BirdsController < ApplicationController
