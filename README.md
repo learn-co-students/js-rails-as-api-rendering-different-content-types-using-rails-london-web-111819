@@ -67,7 +67,7 @@ This isn't very fancy, but **_this is actually enough for us to start using our
 JavaScript skills and access with a `fetch()` request_**. 
 
 To confirm this is working, we need a frontend to send a request to our Rails
-app. In this code-along, there is an HTML file, `example_frontend.html`, for
+app. In this main directory of this code-along, there is an HTML file, `example_frontend.html`, for
 this purpose. Follow these steps to see the BirdsController in action:
 
 1. First, replace `BirdsController` with the code above and start up the Rails
