@@ -80,7 +80,7 @@ this purpose. Follow these steps to see the BirdsController in action:
     This HTML file isn't part of the Rails app. It is here to help you test JS against Rails as you follow along.
     ```
 
-3. While viewing `example_frontend.html`, open the browser cnosole and run the following:
+3. While viewing `example_frontend.html`, open the browser console and run the following:
 
 ```js
 fetch('http://localhost:3000/birds').then(response => response.text()).then(text => console.log(text))
@@ -100,7 +100,7 @@ handle that. But, Rails has one better.
 ### Render JSON From a Controller
 
 To render _JSON_ from a Rails controller, you specify `json:` followed by data
-can be converted to valid JSON:
+that can be converted to valid JSON:
 
 ```ruby
 class BirdsController < ApplicationController
